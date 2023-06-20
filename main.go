@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	fmt.Println("Hey Hash")
@@ -59,4 +61,25 @@ func main() {
 	nums10 := []int{4, 9, 5}
 	nums11 := []int{9, 4, 9, 8, 4}
 	fmt.Println("Intersection2: ", Intersection2(nums10, nums11))
+
+	fmt.Println("Testing custom HashTable...")
+
+	hashTable := Init()
+	fmt.Println("hashTable: ", hashTable)
+	hashTable.Insert("ttest")
+	fmt.Println("hashTable: ", hashTable.Search("ttest"))
+	hashTable.Delete("ttest")
+	fmt.Println("hashTable: ", hashTable.Search("ttest"))
+
+	fmt.Println("containsNearbyDuplicate3...")
+	nums12 := []int{1, 2, 3, 1, 2, 3}
+	target12 := 2
+	fmt.Println("containsNearbyDuplicate3: ", containsNearbyDuplicate3(nums12, target12))
+
+	fmt.Println("numJewelsInStones...")
+	jewels := "aA"
+	stones := "aAAbbbb"
+	fmt.Println("numJewelsInStones: ", numJewelsInStones(jewels, stones))
+	fmt.Println("numJewelsInStonesHM: ", numJewelsInStonesHM(jewels, stones))
+
 }

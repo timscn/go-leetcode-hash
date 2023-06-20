@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func ContainsDuplicateO2(nums []int) bool {
 	fmt.Println("nums: ", nums)
@@ -9,6 +11,17 @@ func ContainsDuplicateO2(nums []int) bool {
 			if nums[i] == nums[j] {
 				return true
 			}
+		}
+	}
+	return false
+}
+
+func containsDuplicate3(nums []int) bool {
+	hm := make(map[int]int)
+	for _, value := range nums {
+		hm[value] += 1
+		if hm[value] > 1 {
+			return true
 		}
 	}
 	return false
@@ -24,4 +37,25 @@ func ContainsDuplicateMap(nums []int) bool {
 		m[v] = 1
 	}
 	return false
+}
+
+func containsNearbyDuplicate3(nums []int, k int) bool {
+	hm := make(map[int]int)
+	for ind, val := range nums {
+		if v, ok := hm[val]; ok {
+			if abs(ind, v) <= k {
+				return true
+			}
+		}
+		hm[val] = ind
+	}
+	return false
+}
+
+func abs(x, y int) int {
+	result := x - y
+	if result < 0 {
+		return -result
+	}
+	return result
 }
